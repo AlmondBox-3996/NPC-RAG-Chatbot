@@ -14,10 +14,11 @@ def query_dialogue(
     orchestrator: DialogueOrchestrator = Depends(get_dialogue_orchestrator),
 ) -> DialogueResponse:
     try:
-        return orchestrator.answer(
+        return orchestrator.answer_with_options(
             player_id=payload.player_id,
             npc_id=payload.npc_id,
             question=payload.question,
+            debug=payload.debug,
         )
     except ValueError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc

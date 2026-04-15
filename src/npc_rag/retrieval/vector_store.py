@@ -60,14 +60,15 @@ class ChromaVectorStore(VectorStore):
         results = self.collection.query(
             query_embeddings=[query_embedding],
             n_results=limit,
-            include=["documents", "metadatas"],
+            include=["documents", "metadatas", "distances"],
         )
 
         documents = results.get("documents", [[]])[0]
         metadatas = results.get("metadatas", [[]])[0]
+        distances = results.get("distances", [[]])[0]
         retrieved: list[RetrievedLore] = []
 
-        for document, metadata in zip(documents, metadatas):
+        for document, metadata, distance in zip(documents, metadatas, distances):
             metadata = metadata or {}
             retrieved.append(
                 RetrievedLore(
@@ -75,6 +76,7 @@ class ChromaVectorStore(VectorStore):
                     source=str(metadata.get("source", "unknown")),
                     content=document,
                     metadata=metadata,
+                    score=float(distance) if distance is not None else None,
                 )
             )
 

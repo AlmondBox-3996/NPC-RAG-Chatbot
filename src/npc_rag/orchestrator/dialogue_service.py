@@ -19,9 +19,23 @@ class DialogueOrchestrator:
         self.model_adapter = model_adapter
 
     def answer(self, player_id: str, npc_id: str, question: str) -> DialogueResponse:
+        return self.answer_with_options(player_id=player_id, npc_id=npc_id, question=question, debug=False)
+
+    def answer_with_options(
+        self,
+        player_id: str,
+        npc_id: str,
+        question: str,
+        debug: bool = False,
+    ) -> DialogueResponse:
         player_state = self.state_loader.load_player_state(player_id)
         world_state = self.state_loader.load_world_state()
-        lore = self.retriever.retrieve(question)
+        lore, retrieval_debug = self.retriever.retrieve(
+            question=question,
+            player_state=player_state,
+            world_state=world_state,
+            debug=debug,
+        )
 
         prompt = build_npc_prompt(
             npc_name=self.npc_name,
@@ -49,4 +63,5 @@ class DialogueOrchestrator:
             retrieved_lore=lore,
             state_summary=state_summary,
             used_mock_llm=generation.used_mock,
+            debug=retrieval_debug,
         )

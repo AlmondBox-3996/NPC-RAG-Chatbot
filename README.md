@@ -28,7 +28,8 @@ Content-Type: application/json
 {
   "player_id": "player-001",
   "npc_id": "quartermaster_rowan",
-  "question": "Where can I find a hidden weapon?"
+  "question": "Where can I find a hidden weapon?",
+  "debug": true
 }
 ```
 
@@ -54,3 +55,53 @@ The project now includes a structured local data layer for:
 - player and world state with discovered regions, bosses, and unlock state
 
 See [docs/data_schema.md](/d:/Codar/NPC-RAG-Chatbot/docs/data_schema.md) for the schema and filtering model.
+
+## Retrieval
+
+The retrieval layer performs:
+
+- semantic vector search over indexed lore chunks
+- metadata filtering for discovered regions, spoiler level, and quest progression
+- top-k ranking based on vector similarity order after filtering
+- optional debug output with retrieved and excluded chunks
+
+Example debug payload shape:
+
+```json
+{
+  "retrieved_lore": [
+    {
+      "document_id": "lore_watchtower_cache-chunk-0-a1b2c3d4e5f6",
+      "source": "lore_documents.json",
+      "content": "During the last siege, the wardens sealed reserve arms beneath the watchtower...",
+      "metadata": {
+        "region": "whispering_pass",
+        "quest": "",
+        "item": "",
+        "spoiler_level": 1,
+        "npc_relevance": "npc_quartermaster_rowan"
+      },
+      "score": 0.214
+    }
+  ],
+  "debug": {
+    "query": "Where can I find a hidden weapon?",
+    "top_k": 4,
+    "candidate_count": 5,
+    "returned_count": 2,
+    "applied_filters": {
+      "accessible_regions": ["market_square", "red_hollow", "whispering_pass"],
+      "completed_quests": ["q_scouts_ledger"],
+      "active_quests": ["q_shrine_of_embers"],
+      "owned_items": ["itm_watcher_sabre"],
+      "allowed_spoiler_level": 2
+    },
+    "excluded_chunks": [
+      {
+        "document_id": "lore_sunken_archive-chunk-0-ff00aa11bb22",
+        "excluded_by": ["undiscovered_region", "spoiler_level", "quest_progression"]
+      }
+    ]
+  }
+}
+```
