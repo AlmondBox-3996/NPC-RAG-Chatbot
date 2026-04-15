@@ -33,6 +33,8 @@ def get_state_loader() -> StateLoader:
     return StateLoader(
         player_state_path=settings.player_state_path,
         world_state_path=settings.world_state_path,
+        npc_data_path=settings.npc_data_path,
+        item_data_path=settings.item_data_path,
     )
 
 

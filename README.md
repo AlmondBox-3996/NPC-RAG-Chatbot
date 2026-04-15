@@ -56,6 +56,19 @@ The project now includes a structured local data layer for:
 
 See [docs/data_schema.md](/d:/Codar/NPC-RAG-Chatbot/docs/data_schema.md) for the schema and filtering model.
 
+## State Handling
+
+The state layer now does two jobs:
+
+- load raw player state such as level, inventory, completed quests, and discovered regions
+- load world state such as dungeon unlocks, boss status, and claimed items
+
+It also derives runtime facts for dialogue orchestration:
+
+- what the player is allowed to know right now
+- what an NPC should reveal based on their knowledge boundaries
+- the current progression stage
+
 ## Retrieval
 
 The retrieval layer performs:

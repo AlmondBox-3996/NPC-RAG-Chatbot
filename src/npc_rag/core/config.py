@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     player_state_path: Path = Field(default=Path("./data/state/player_state.json"), alias="PLAYER_STATE_PATH")
     world_state_path: Path = Field(default=Path("./data/state/world_state.json"), alias="WORLD_STATE_PATH")
     lore_path: Path = Field(default=Path("./data/lore"), alias="LORE_PATH")
+    npc_data_path: Path = Field(default=Path("./data/npcs.json"), alias="NPC_DATA_PATH")
+    item_data_path: Path = Field(default=Path("./data/items.json"), alias="ITEM_DATA_PATH")
 
     top_k_results: int = Field(default=4, alias="TOP_K_RESULTS")
     npc_name: str = Field(default="Quartermaster Rowan", alias="NPC_NAME")

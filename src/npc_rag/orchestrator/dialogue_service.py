@@ -30,6 +30,11 @@ class DialogueOrchestrator:
     ) -> DialogueResponse:
         player_state = self.state_loader.load_player_state(player_id)
         world_state = self.state_loader.load_world_state()
+        derived_context = self.state_loader.build_derived_context(
+            player_state=player_state,
+            world_state=world_state,
+            npc_id=npc_id,
+        )
         lore, retrieval_debug = self.retriever.retrieve(
             question=question,
             player_state=player_state,
@@ -54,6 +59,15 @@ class DialogueOrchestrator:
             "owned_items": player_state.inventory.owned_items,
             "unlocked_regions": [region.region_id for region in world_state.regions if region.is_unlocked],
             "active_events": [event.description for event in world_state.active_events],
+            "progression_stage": derived_context.player_knowledge.progression_stage,
+            "allowed_spoiler_level": derived_context.player_knowledge.allowed_spoiler_level,
+            "npc_reveal_spoiler_level": derived_context.npc_reveal_policy.reveal_spoiler_level,
+            "npc_full_hint_unlocked": derived_context.npc_reveal_policy.full_hint_unlocked,
+            "unlocked_dungeons": derived_context.world_status.unlocked_dungeons,
+            "locked_dungeons": derived_context.world_status.locked_dungeons,
+            "bosses_alive": derived_context.world_status.bosses_alive,
+            "bosses_dead": derived_context.world_status.bosses_dead,
+            "claimed_items": derived_context.world_status.claimed_items,
         }
 
         return DialogueResponse(
