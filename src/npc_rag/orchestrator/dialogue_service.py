@@ -1,5 +1,5 @@
 from npc_rag.model.ollama_adapter import GenerationResult, ModelAdapter
-from npc_rag.orchestrator.prompt_builder import build_npc_prompt
+from npc_rag.orchestrator.prompt_builder import build_prompt_messages
 from npc_rag.retrieval.retriever import LoreRetriever
 from npc_rag.schemas.dialogue import DialogueResponse
 from npc_rag.state.loader import StateLoader
@@ -12,11 +12,13 @@ class DialogueOrchestrator:
         retriever: LoreRetriever,
         state_loader: StateLoader,
         model_adapter: ModelAdapter,
+        llm_temperature: float,
     ) -> None:
         self.npc_name = npc_name
         self.retriever = retriever
         self.state_loader = state_loader
         self.model_adapter = model_adapter
+        self.llm_temperature = llm_temperature
 
     def answer(self, player_id: str, npc_id: str, question: str) -> DialogueResponse:
         return self.answer_with_options(player_id=player_id, npc_id=npc_id, question=question, debug=False)
@@ -42,7 +44,7 @@ class DialogueOrchestrator:
             debug=debug,
         )
 
-        prompt = build_npc_prompt(
+        system_prompt, prompt = build_prompt_messages(
             npc_name=self.npc_name,
             question=question,
             lore_context=lore,
@@ -50,7 +52,11 @@ class DialogueOrchestrator:
             world_state=world_state,
             derived_context=derived_context,
         )
-        generation: GenerationResult = self.model_adapter.generate(prompt)
+        generation: GenerationResult = self.model_adapter.generate(
+            prompt=prompt,
+            system_prompt=system_prompt,
+            temperature=self.llm_temperature,
+        )
 
         state_summary = {
             "player_level": player_state.level,

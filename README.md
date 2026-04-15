@@ -182,3 +182,25 @@ Reveal constraints:
 
 Answer as the NPC now.
 ```
+
+## Model Adapter
+
+The model layer is local-only and swappable:
+
+- `OllamaModelAdapter` calls the configured local Ollama model
+- `MockModelAdapter` returns deterministic test responses with no cloud dependency
+
+Environment controls:
+
+- `OLLAMA_MODEL`
+- `OLLAMA_BASE_URL`
+- `LLM_TEMPERATURE`
+- `ENABLE_MOCK_LLM`
+
+Adapter contract:
+
+```python
+generate(prompt, system_prompt, temperature)
+```
+
+This keeps the orchestration layer independent from the underlying local model runtime.

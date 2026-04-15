@@ -12,7 +12,7 @@ class GenerationResult:
 
 class ModelAdapter(ABC):
     @abstractmethod
-    def generate(self, prompt: str) -> GenerationResult:
+    def generate(self, prompt: str, system_prompt: str, temperature: float) -> GenerationResult:
         raise NotImplementedError
 
 
@@ -22,11 +22,20 @@ class OllamaModelAdapter(ModelAdapter):
         self.client = ollama.Client(host=base_url)
         self.fallback_adapter = fallback_adapter
 
-    def generate(self, prompt: str) -> GenerationResult:
+    def generate(self, prompt: str, system_prompt: str, temperature: float) -> GenerationResult:
         try:
-            response = self.client.generate(model=self.model_name, prompt=prompt)
+            response = self.client.generate(
+                model=self.model_name,
+                prompt=prompt,
+                system=system_prompt,
+                options={"temperature": temperature},
+            )
             return GenerationResult(text=response["response"].strip(), used_mock=False)
         except Exception:
             if self.fallback_adapter is None:
                 raise
-            return self.fallback_adapter.generate(prompt)
+            return self.fallback_adapter.generate(
+                prompt=prompt,
+                system_prompt=system_prompt,
+                temperature=temperature,
+            )

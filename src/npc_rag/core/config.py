@@ -23,6 +23,7 @@ class Settings(BaseSettings):
     llm_provider: str = Field(default="ollama", alias="LLM_PROVIDER")
     ollama_model: str = Field(default="llama3.1:8b", alias="OLLAMA_MODEL")
     ollama_base_url: str = Field(default="http://localhost:11434", alias="OLLAMA_BASE_URL")
+    llm_temperature: float = Field(default=0.2, alias="LLM_TEMPERATURE")
     enable_mock_llm: bool = Field(default=True, alias="ENABLE_MOCK_LLM")
 
     player_state_path: Path = Field(default=Path("./data/state/player_state.json"), alias="PLAYER_STATE_PATH")

@@ -124,3 +124,22 @@ def build_npc_prompt(
         derived_context=derived_context,
     )
     return f"{system_prompt}\n\nContext:\n{context_prompt}\n\nAnswer as the NPC now."
+
+
+def build_prompt_messages(
+    npc_name: str,
+    question: str,
+    lore_context: list[RetrievedLore],
+    player_state: PlayerState,
+    world_state: WorldState,
+    derived_context: DerivedContext,
+) -> tuple[str, str]:
+    system_prompt = build_system_prompt(npc_name=npc_name, derived_context=derived_context)
+    prompt = build_context_prompt(
+        question=question,
+        lore_context=lore_context,
+        player_state=player_state,
+        world_state=world_state,
+        derived_context=derived_context,
+    )
+    return system_prompt, prompt

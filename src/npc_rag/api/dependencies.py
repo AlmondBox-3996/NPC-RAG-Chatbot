@@ -57,4 +57,5 @@ def get_dialogue_orchestrator() -> DialogueOrchestrator:
         retriever=retriever,
         state_loader=get_state_loader(),
         model_adapter=get_model_adapter(),
+        llm_temperature=settings.llm_temperature,
     )
