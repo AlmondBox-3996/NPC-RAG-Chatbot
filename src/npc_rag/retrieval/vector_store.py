@@ -17,6 +17,10 @@ class VectorStore(ABC):
     def query(self, query_text: str, limit: int) -> list[RetrievedLore]:
         raise NotImplementedError
 
+    @abstractmethod
+    def reset(self) -> None:
+        raise NotImplementedError
+
 
 class ChromaVectorStore(VectorStore):
     def __init__(
@@ -30,6 +34,7 @@ class ChromaVectorStore(VectorStore):
             path=persist_path,
             settings=ChromaSettings(anonymized_telemetry=False),
         )
+        self.collection_name = collection_name
         self.collection = self.client.get_or_create_collection(name=collection_name)
 
     def upsert_documents(self, documents: list[LoreDocument]) -> None:
@@ -74,3 +79,10 @@ class ChromaVectorStore(VectorStore):
             )
 
         return retrieved
+
+    def reset(self) -> None:
+        try:
+            self.client.delete_collection(self.collection_name)
+        except Exception:
+            pass
+        self.collection = self.client.get_or_create_collection(name=self.collection_name)

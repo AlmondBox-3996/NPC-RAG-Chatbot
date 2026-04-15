@@ -9,8 +9,14 @@ python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 Copy-Item .env.example .env
-python scripts/ingest_lore.py
+python scripts/index_lore.py
 uvicorn src.npc_rag.main:app --reload
+```
+
+To rebuild the vector collection from scratch:
+
+```powershell
+python scripts/index_lore.py --reset
 ```
 
 ## Example request

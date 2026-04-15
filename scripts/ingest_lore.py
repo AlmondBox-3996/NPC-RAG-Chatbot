@@ -14,8 +14,11 @@ from npc_rag.ingestion.indexer import LoreIndexer
 def main() -> None:
     settings = get_settings()
     indexer = LoreIndexer(get_vector_store())
-    count = indexer.ingest(settings.lore_path)
-    print(f"Ingested {count} lore chunks into {settings.vector_db_provider}.")
+    result = indexer.ingest(settings.lore_path)
+    print(
+        f"Indexed {result.indexed_documents} lore documents into "
+        f"{result.indexed_chunks} chunks in {settings.vector_db_provider}."
+    )
 
 
 if __name__ == "__main__":
