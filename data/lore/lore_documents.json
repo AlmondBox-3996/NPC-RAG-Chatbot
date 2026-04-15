@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "documents": [
+    {
+      "document_id": "lore_watchtower_cache",
+      "title": "The Watchtower Cache",
+      "category": "history",
+      "region_tags": [
+        "whispering_pass",
+        "ridge_shrine"
+      ],
+      "spoiler_level": 1,
+      "quest_dependencies": [],
+      "related_npcs": [
+        "npc_quartermaster_rowan"
+      ],
+      "summary": "Wardens hid an emergency weapon cache beneath a shrine-facing watchtower.",
+      "content": "During the last siege, the wardens sealed reserve arms beneath the watchtower that overlooks the Ridge Shrine. The stone altar below can be shifted only after the three floor stones are aligned in order from east to west. Most soldiers knew the tower held supplies, but only quartermasters recorded that one ceremonial blade was never reclaimed."
+    },
+    {
+      "document_id": "lore_scout_routes",
+      "title": "Scout Routes Through Whispering Pass",
+      "category": "field_notes",
+      "region_tags": [
+        "whispering_pass"
+      ],
+      "spoiler_level": 0,
+      "quest_dependencies": [],
+      "related_npcs": [
+        "npc_quartermaster_rowan"
+      ],
+      "summary": "Safe movement through the pass depends on old scout markers and dawn timing.",
+      "content": "Whispering Pass is survivable only if the traveler follows the weathered scout markers and moves before the valley fog thickens. Raiders avoid the narrow goat ledge near the prayer cairns because pack animals cannot cross it. Anyone who mapped the pass for the Scout's Ledger expedition would recognize the marker stones immediately."
+    },
+    {
+      "document_id": "lore_shrine_embers",
+      "title": "Litany of the Ridge Shrine",
+      "category": "religion",
+      "region_tags": [
+        "ridge_shrine"
+      ],
+      "spoiler_level": 2,
+      "quest_dependencies": [
+        "q_shrine_of_embers"
+      ],
+      "related_npcs": [
+        "npc_sister_elira"
+      ],
+      "summary": "The shrine's hidden chamber opens only for those carrying an emberseal prayer strip.",
+      "content": "The Ridge Shrine was built with a concealed reliquary for relic blades entrusted to chosen wardens. The lower chamber does not answer to force; it answers to ritual sequence. Pilgrims carrying an emberseal prayer strip can reveal the hidden seam beside the altar, after which the floor stones unlock the descent."
+    },
+    {
+      "document_id": "lore_sunken_archive",
+      "title": "Fragments from the Sunken Archive",
+      "category": "forbidden_records",
+      "region_tags": [
+        "sunken_archive"
+      ],
+      "spoiler_level": 3,
+      "quest_dependencies": [
+        "q_archive_below_tide"
+      ],
+      "related_npcs": [
+        "npc_mirek_ves"
+      ],
+      "summary": "A drowned vault stores weapons bound to old blood oaths.",
+      "content": "The Sunken Archive preserves sealed ledgers describing oath-bound weapons that reject any bearer outside the warden line. One page mentions a spear of black glass locked beneath silt-choked stairs, guarded by floodgates that answer only after the Abbess of Silt is stirred from her crypt."
+    },
+    {
+      "document_id": "lore_raider_interest",
+      "title": "Why the Ashen Raiders Search the North",
+      "category": "faction_intelligence",
+      "region_tags": [
+        "whispering_pass",
+        "red_hollow",
+        "ridge_shrine"
+      ],
+      "spoiler_level": 1,
+      "quest_dependencies": [],
+      "related_npcs": [
+        "npc_quartermaster_rowan",
+        "npc_mirek_ves"
+      ],
+      "summary": "Raiders seek hidden relic weapons before the wardens can recover them.",
+      "content": "The Ashen Raiders have stopped chasing caravans and now probe old military sites across the northern ridge. Their captains believe one intact relic weapon remains hidden near the shrine road, and they have been bribing scavengers to search old signal towers first. Quartermaster Rowan therefore shares only partial directions unless a traveler has already proven loyal to Red Hollow."
+    }
+  ]
+}

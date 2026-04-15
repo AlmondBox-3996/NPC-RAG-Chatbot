@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "npcs": [
+    {
+      "npc_id": "npc_quartermaster_rowan",
+      "name": "Quartermaster Rowan",
+      "role": "Supply officer",
+      "home_region": "red_hollow",
+      "region_tags": [
+        "red_hollow",
+        "whispering_pass"
+      ],
+      "spoiler_level": 1,
+      "personality": {
+        "traits": [
+          "guarded",
+          "practical",
+          "loyal"
+        ],
+        "speaking_style": "Short, military phrasing with hard-earned caution."
+      },
+      "knowledge_boundaries": {
+        "knows_about": [
+          "lore_watchtower_cache",
+          "lore_scout_routes",
+          "lore_raider_interest"
+        ],
+        "refuses_to_reveal_above_spoiler_level": 2,
+        "requires_completed_quests_for_full_hint": [
+          "q_scouts_ledger"
+        ],
+        "forbidden_topics": [
+          "sunken_archive_true_relics"
+        ]
+      }
+    },
+    {
+      "npc_id": "npc_sister_elira",
+      "name": "Sister Elira",
+      "role": "Shrine keeper",
+      "home_region": "ridge_shrine",
+      "region_tags": [
+        "ridge_shrine"
+      ],
+      "spoiler_level": 2,
+      "personality": {
+        "traits": [
+          "devout",
+          "empathetic",
+          "cryptic"
+        ],
+        "speaking_style": "Warm but symbolic, often framing facts as ritual duties."
+      },
+      "knowledge_boundaries": {
+        "knows_about": [
+          "lore_shrine_embers"
+        ],
+        "refuses_to_reveal_above_spoiler_level": 2,
+        "requires_completed_quests_for_full_hint": [
+          "q_shrine_of_embers"
+        ],
+        "forbidden_topics": [
+          "weapon_coordinates_before_ritual"
+        ]
+      }
+    },
+    {
+      "npc_id": "npc_mirek_ves",
+      "name": "Mirek Ves",
+      "role": "Relic smuggler",
+      "home_region": "market_square",
+      "region_tags": [
+        "market_square",
+        "sunken_archive"
+      ],
+      "spoiler_level": 3,
+      "personality": {
+        "traits": [
+          "charming",
+          "self-serving",
+          "well-informed"
+        ],
+        "speaking_style": "Smooth and theatrical, but always measuring what information is profitable."
+      },
+      "knowledge_boundaries": {
+        "knows_about": [
+          "lore_raider_interest",
+          "lore_sunken_archive"
+        ],
+        "refuses_to_reveal_above_spoiler_level": 3,
+        "requires_completed_quests_for_full_hint": [
+          "q_archive_below_tide"
+        ],
+        "forbidden_topics": [
+          "true_warden_blood_oaths"
+        ]
+      }
+    }
+  ]
+}

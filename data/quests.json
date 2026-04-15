@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "quests": [
+    {
+      "quest_id": "q_scouts_ledger",
+      "title": "Scout's Ledger",
+      "type": "side",
+      "region_tags": [
+        "red_hollow",
+        "whispering_pass"
+      ],
+      "spoiler_level": 0,
+      "quest_dependencies": [],
+      "prerequisites": {
+        "required_regions": [
+          "red_hollow"
+        ],
+        "required_completed_quests": [],
+        "required_items": []
+      },
+      "rewards": [
+        "region_knowledge:whispering_pass",
+        "npc_trust:npc_quartermaster_rowan"
+      ],
+      "summary": "Map the safe scout trail through Whispering Pass."
+    },
+    {
+      "quest_id": "q_shrine_of_embers",
+      "title": "Shrine of Embers",
+      "type": "main",
+      "region_tags": [
+        "whispering_pass",
+        "ridge_shrine"
+      ],
+      "spoiler_level": 2,
+      "quest_dependencies": [
+        "q_scouts_ledger"
+      ],
+      "prerequisites": {
+        "required_regions": [
+          "whispering_pass"
+        ],
+        "required_completed_quests": [
+          "q_scouts_ledger"
+        ],
+        "required_items": []
+      },
+      "rewards": [
+        "unlock_region:ridge_shrine",
+        "item_hint:itm_emberfang"
+      ],
+      "summary": "Escort Sister Elira to the Ridge Shrine and restore the altar seal."
+    },
+    {
+      "quest_id": "q_archive_below_tide",
+      "title": "Archive Below Tide",
+      "type": "endgame_side",
+      "region_tags": [
+        "sunken_archive"
+      ],
+      "spoiler_level": 3,
+      "quest_dependencies": [
+        "q_shrine_of_embers"
+      ],
+      "prerequisites": {
+        "required_regions": [
+          "ridge_shrine"
+        ],
+        "required_completed_quests": [
+          "q_shrine_of_embers"
+        ],
+        "required_items": [
+          "itm_emberfang"
+        ]
+      },
+      "rewards": [
+        "unlock_region:sunken_archive",
+        "item_hint:itm_tideglass_pike"
+      ],
+      "summary": "Use the shrine relic to breach the drowned vault beneath the Sunken Archive."
+    }
+  ]
+}

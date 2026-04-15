@@ -34,10 +34,12 @@ class DialogueOrchestrator:
 
         state_summary = {
             "player_level": player_state.level,
-            "completed_quests": player_state.completed_quests,
-            "known_locations": player_state.known_locations,
-            "world_region": world_state.region,
-            "active_events": world_state.active_events,
+            "completed_quests": player_state.progress.completed_quests,
+            "active_quests": player_state.progress.active_quests,
+            "discovered_regions": player_state.discovery.discovered_regions,
+            "owned_items": player_state.inventory.owned_items,
+            "unlocked_regions": [region.region_id for region in world_state.regions if region.is_unlocked],
+            "active_events": [event.description for event in world_state.active_events],
         }
 
         return DialogueResponse(

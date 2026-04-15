@@ -1,15 +1,51 @@
 {
+  "schema_version": "1.0",
   "players": [
     {
       "player_id": "player-001",
-      "name": "Arin",
+      "name": "Arin Vale",
+      "class": "Ranger",
       "level": 12,
-      "completed_quests": ["Scout's Ledger", "Supply Run"],
-      "known_locations": ["Whispering Pass", "Red Hollow", "Market Square"],
-      "inventory": ["Torch", "Iron Dagger", "Scout Emblem"],
+      "progress": {
+        "main_story_stage": "after_red_hollow",
+        "completed_quests": [
+          "q_scouts_ledger"
+        ],
+        "active_quests": [
+          "q_shrine_of_embers"
+        ],
+        "failed_quests": []
+      },
+      "inventory": {
+        "currencies": {
+          "gold": 184,
+          "ash_marks": 7
+        },
+        "owned_items": [
+          "itm_watcher_sabre"
+        ],
+        "equipped_items": [
+          "itm_watcher_sabre"
+        ]
+      },
+      "discovery": {
+        "discovered_regions": [
+          "red_hollow",
+          "whispering_pass",
+          "market_square"
+        ],
+        "visited_dungeons": [
+          "watchtower_ruins"
+        ],
+        "known_npcs": [
+          "npc_quartermaster_rowan",
+          "npc_sister_elira"
+        ]
+      },
       "flags": {
         "trusted_by_rowan": true,
-        "ridge_shrine_unlocked": false
+        "ridge_shrine_gate_seen": true,
+        "boss_ash_marrow_defeated": false
       }
     }
   ]

@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "items": [
+    {
+      "item_id": "itm_watcher_sabre",
+      "name": "Watcher's Sabre",
+      "item_type": "weapon",
+      "weapon_class": "sword",
+      "rarity": "uncommon",
+      "region_tags": [
+        "red_hollow"
+      ],
+      "spoiler_level": 0,
+      "is_hidden": false,
+      "ownership_conditions": {
+        "required_regions": [
+          "red_hollow"
+        ],
+        "required_completed_quests": [],
+        "required_owned_items": [],
+        "required_flags": {}
+      },
+      "acquisition": {
+        "source_type": "merchant",
+        "source_id": "npc_quartermaster_rowan",
+        "details": "Issued to trusted scouts after their first resupply."
+      }
+    },
+    {
+      "item_id": "itm_emberfang",
+      "name": "Emberfang",
+      "item_type": "weapon",
+      "weapon_class": "greatsword",
+      "rarity": "rare",
+      "region_tags": [
+        "ridge_shrine",
+        "whispering_pass"
+      ],
+      "spoiler_level": 2,
+      "is_hidden": true,
+      "ownership_conditions": {
+        "required_regions": [
+          "whispering_pass"
+        ],
+        "required_completed_quests": [
+          "q_scouts_ledger"
+        ],
+        "required_owned_items": [],
+        "required_flags": {
+          "trusted_by_rowan": true
+        }
+      },
+      "acquisition": {
+        "source_type": "dungeon_cache",
+        "source_id": "ridge_shrine",
+        "details": "Hidden behind the shrine altar after the emberseal ritual and floor-stone puzzle."
+      }
+    },
+    {
+      "item_id": "itm_briarlock_bow",
+      "name": "Briarlock Bow",
+      "item_type": "weapon",
+      "weapon_class": "bow",
+      "rarity": "rare",
+      "region_tags": [
+        "whispering_pass"
+      ],
+      "spoiler_level": 1,
+      "is_hidden": true,
+      "ownership_conditions": {
+        "required_regions": [
+          "whispering_pass"
+        ],
+        "required_completed_quests": [
+          "q_scouts_ledger"
+        ],
+        "required_owned_items": [],
+        "required_flags": {}
+      },
+      "acquisition": {
+        "source_type": "side_cache",
+        "source_id": "watchtower_ruins",
+        "details": "Found in a false wall reachable only from the scout ledge at dawn."
+      }
+    },
+    {
+      "item_id": "itm_tideglass_pike",
+      "name": "Tideglass Pike",
+      "item_type": "weapon",
+      "weapon_class": "spear",
+      "rarity": "legendary",
+      "region_tags": [
+        "sunken_archive"
+      ],
+      "spoiler_level": 3,
+      "is_hidden": true,
+      "ownership_conditions": {
+        "required_regions": [
+          "sunken_archive"
+        ],
+        "required_completed_quests": [
+          "q_archive_below_tide"
+        ],
+        "required_owned_items": [
+          "itm_emberfang"
+        ],
+        "required_flags": {
+          "boss_ash_marrow_defeated": true
+        }
+      },
+      "acquisition": {
+        "source_type": "boss_vault",
+        "source_id": "boss_abbess_of_silt",
+        "details": "Claimed from the flooded reliquary after opening the silt gates."
+      }
+    }
+  ]
+}

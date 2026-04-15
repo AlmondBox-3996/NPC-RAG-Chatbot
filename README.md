@@ -36,3 +36,15 @@ Content-Type: application/json
 - `api`: FastAPI endpoints and dependency wiring.
 
 This keeps retrieval, state, and model access isolated so you can later swap JSON for SQLite, ChromaDB for FAISS, or the HTTP API for a native game engine bridge without rewriting the rest of the system.
+
+## Data Layer
+
+The project now includes a structured local data layer for:
+
+- 5 lore documents with spoiler levels and region tags
+- 3 quests with prerequisite chains
+- 4 weapons with hidden-item ownership conditions
+- 3 NPCs with personalities and knowledge boundaries
+- player and world state with discovered regions, bosses, and unlock state
+
+See [docs/data_schema.md](/d:/Codar/NPC-RAG-Chatbot/docs/data_schema.md) for the schema and filtering model.

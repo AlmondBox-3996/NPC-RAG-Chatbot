@@ -13,6 +13,9 @@ def build_npc_prompt(
         f"[{item.source}] {item.content}"
         for item in lore_context
     ) or "No lore passages were retrieved."
+    unlocked_regions = [region.name for region in world_state.regions if region.is_unlocked]
+    active_event_descriptions = [event.description for event in world_state.active_events]
+    boss_summaries = [f"{boss.name} ({boss.status})" for boss in world_state.bosses]
 
     return f"""
 You are {npc_name}, an in-world NPC speaking naturally to the player.
@@ -26,19 +29,19 @@ Relevant lore:
 
 Player progress:
 - Name: {player_state.name}
+- Class: {player_state.player_class}
 - Level: {player_state.level}
-- Completed quests: {", ".join(player_state.completed_quests) or "none"}
-- Known locations: {", ".join(player_state.known_locations) or "none"}
-- Inventory: {", ".join(player_state.inventory) or "empty"}
+- Completed quests: {", ".join(player_state.progress.completed_quests) or "none"}
+- Active quests: {", ".join(player_state.progress.active_quests) or "none"}
+- Discovered regions: {", ".join(player_state.discovery.discovered_regions) or "none"}
+- Inventory: {", ".join(player_state.inventory.owned_items) or "empty"}
 - Flags: {player_state.flags}
 
 Current world state:
-- Region: {world_state.region}
-- Weather: {world_state.weather}
-- Threat level: {world_state.threat_level}
-- Active events: {", ".join(world_state.active_events) or "none"}
-- Hidden weapon hint: {world_state.hidden_weapon_hint}
-- NPC context: {world_state.npc_context}
+- Unlocked regions: {", ".join(unlocked_regions) or "none"}
+- Active events: {", ".join(active_event_descriptions) or "none"}
+- Bosses: {", ".join(boss_summaries) or "none"}
+- Global flags: {world_state.global_flags}
 
 Respond in 4 sentences or fewer, with game-world flavor and practical guidance.
 """.strip()

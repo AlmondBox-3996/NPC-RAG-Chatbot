@@ -1,13 +1,91 @@
 {
-  "region": "Northern Ridge",
-  "weather": "Cold fog with light rain",
-  "threat_level": "Elevated",
-  "active_events": ["Ashen Raider patrols increased", "Ridge shrine gates are unstable"],
-  "hidden_weapon_hint": "The shrine mechanism responds to the three floor stones nearest the altar.",
-  "npc_context": {
-    "quartermaster_rowan": {
-      "mood": "cautious",
-      "goal": "Keep relic weapons away from raiders"
+  "schema_version": "1.0",
+  "world_id": "vale_of_cinders",
+  "time": {
+    "chapter": 2,
+    "season": "Late Rainfall",
+    "time_of_day": "Dusk"
+  },
+  "regions": [
+    {
+      "region_id": "red_hollow",
+      "name": "Red Hollow",
+      "tags": [
+        "settlement",
+        "frontier"
+      ],
+      "is_unlocked": true,
+      "threat_level": "moderate"
+    },
+    {
+      "region_id": "whispering_pass",
+      "name": "Whispering Pass",
+      "tags": [
+        "mountain",
+        "fog",
+        "smuggler_route"
+      ],
+      "is_unlocked": true,
+      "threat_level": "high"
+    },
+    {
+      "region_id": "ridge_shrine",
+      "name": "Ridge Shrine",
+      "tags": [
+        "shrine",
+        "hidden_weapon",
+        "dungeon"
+      ],
+      "is_unlocked": false,
+      "threat_level": "high"
+    },
+    {
+      "region_id": "sunken_archive",
+      "name": "Sunken Archive",
+      "tags": [
+        "ruins",
+        "flooded",
+        "forbidden"
+      ],
+      "is_unlocked": false,
+      "threat_level": "extreme"
     }
+  ],
+  "bosses": [
+    {
+      "boss_id": "boss_ash_marrow",
+      "name": "Ash Marrow",
+      "region_id": "whispering_pass",
+      "status": "alive",
+      "gates_region_unlock": "ridge_shrine"
+    },
+    {
+      "boss_id": "boss_abbess_of_silt",
+      "name": "Abbess of Silt",
+      "region_id": "sunken_archive",
+      "status": "dormant",
+      "gates_region_unlock": null
+    }
+  ],
+  "active_events": [
+    {
+      "event_id": "evt_raider_patrols",
+      "description": "Ashen Raider patrols search the northern ridges for relic steel.",
+      "affected_regions": [
+        "whispering_pass",
+        "ridge_shrine"
+      ]
+    },
+    {
+      "event_id": "evt_shrine_instability",
+      "description": "The old floor-stone mechanism beneath the Ridge Shrine is unstable after recent tremors.",
+      "affected_regions": [
+        "ridge_shrine"
+      ]
+    }
+  ],
+  "global_flags": {
+    "wardens_signal_network_online": false,
+    "northern_trade_route_open": true
   }
 }
