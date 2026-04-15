@@ -204,3 +204,23 @@ generate(prompt, system_prompt, temperature)
 ```
 
 This keeps the orchestration layer independent from the underlying local model runtime.
+
+## Orchestrator Flow
+
+The orchestrator now runs an explicit end-to-end pipeline:
+
+1. accept player query
+2. classify intent with a lightweight local classifier
+3. load player and world state
+4. derive runtime knowledge and reveal constraints
+5. retrieve relevant lore with filtering
+6. build system and context prompts
+7. generate the NPC response through the model adapter
+8. return the response with optional retrieval and orchestration debug data
+
+Guardrails are applied through retrieval filtering, derived state, and prompt constraints so responses stay:
+
+- grounded in indexed lore and local state
+- adapted to player progression
+- limited by NPC knowledge boundaries
+- spoiler-safe

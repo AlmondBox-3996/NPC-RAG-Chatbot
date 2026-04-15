@@ -3,6 +3,7 @@ from functools import lru_cache
 from npc_rag.core.config import Settings, get_settings
 from npc_rag.model.mock_adapter import MockModelAdapter
 from npc_rag.model.ollama_adapter import ModelAdapter, OllamaModelAdapter
+from npc_rag.orchestrator.intent_classifier import QueryIntentClassifier
 from npc_rag.orchestrator.dialogue_service import DialogueOrchestrator
 from npc_rag.retrieval.embedding_service import EmbeddingService
 from npc_rag.retrieval.retriever import LoreRetriever
@@ -58,4 +59,5 @@ def get_dialogue_orchestrator() -> DialogueOrchestrator:
         state_loader=get_state_loader(),
         model_adapter=get_model_adapter(),
         llm_temperature=settings.llm_temperature,
+        intent_classifier=QueryIntentClassifier(),
     )

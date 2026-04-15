@@ -36,6 +36,14 @@ class RetrievalDebug(BaseModel):
     excluded_chunks: list[FilteredChunk]
 
 
+class OrchestrationDebug(BaseModel):
+    intent: str
+    confidence: float
+    cues: list[str]
+    pipeline_steps: list[str]
+    system_prompt_preview: str | None = None
+
+
 class DialogueResponse(BaseModel):
     npc_id: str
     npc_name: str
@@ -44,3 +52,4 @@ class DialogueResponse(BaseModel):
     state_summary: dict[str, Any]
     used_mock_llm: bool
     debug: RetrievalDebug | None = None
+    orchestration: OrchestrationDebug | None = None
