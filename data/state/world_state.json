@@ -1,0 +1,13 @@
+{
+  "region": "Northern Ridge",
+  "weather": "Cold fog with light rain",
+  "threat_level": "Elevated",
+  "active_events": ["Ashen Raider patrols increased", "Ridge shrine gates are unstable"],
+  "hidden_weapon_hint": "The shrine mechanism responds to the three floor stones nearest the altar.",
+  "npc_context": {
+    "quartermaster_rowan": {
+      "mood": "cautious",
+      "goal": "Keep relic weapons away from raiders"
+    }
+  }
+}

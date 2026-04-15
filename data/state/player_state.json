@@ -1,0 +1,16 @@
+{
+  "players": [
+    {
+      "player_id": "player-001",
+      "name": "Arin",
+      "level": 12,
+      "completed_quests": ["Scout's Ledger", "Supply Run"],
+      "known_locations": ["Whispering Pass", "Red Hollow", "Market Square"],
+      "inventory": ["Torch", "Iron Dagger", "Scout Emblem"],
+      "flags": {
+        "trusted_by_rowan": true,
+        "ridge_shrine_unlocked": false
+      }
+    }
+  ]
+}
