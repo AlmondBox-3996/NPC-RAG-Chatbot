@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from npc_rag.api.routes import router
+from npc_rag.api.routes import public_router, router
 from npc_rag.core.config import get_settings
 
 
@@ -11,6 +11,7 @@ app = FastAPI(
     version="0.1.0",
     description="Local-only RAG NPC dialogue backend for games.",
 )
+app.include_router(public_router)
 app.include_router(router, prefix="/api/v1")
 
 

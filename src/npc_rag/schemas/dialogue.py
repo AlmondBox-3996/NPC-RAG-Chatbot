@@ -10,6 +10,13 @@ class DialogueQuery(BaseModel):
     debug: bool = Field(default=False, examples=[True])
 
 
+class NpcChatRequest(BaseModel):
+    npc_id: str = Field(..., examples=["npc_quartermaster_rowan"])
+    player_id: str = Field(..., examples=["player-001"])
+    message: str = Field(..., examples=["Where can I find a hidden weapon?"])
+    debug: bool = Field(default=False, examples=[True])
+
+
 class RetrievedLore(BaseModel):
     document_id: str
     source: str

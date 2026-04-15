@@ -19,18 +19,40 @@ To rebuild the vector collection from scratch:
 python scripts/index_lore.py --reset
 ```
 
-## Example request
+## API
 
 ```http
-POST /api/v1/dialogue/query
+POST /npc/chat
 Content-Type: application/json
 
 {
+  "npc_id": "npc_quartermaster_rowan",
   "player_id": "player-001",
-  "npc_id": "quartermaster_rowan",
-  "question": "Where can I find a hidden weapon?",
+  "message": "Where can I find a hidden weapon?",
   "debug": true
 }
+```
+
+Legacy route:
+
+```http
+POST /api/v1/dialogue/query
+```
+
+Example `curl`:
+
+```powershell
+curl -X POST http://127.0.0.1:8000/npc/chat `
+  -H "Content-Type: application/json" `
+  -d "{\"npc_id\":\"npc_quartermaster_rowan\",\"player_id\":\"player-001\",\"message\":\"Where can I find a hidden weapon?\",\"debug\":true}"
+```
+
+## CLI Demo
+
+Interactive local chat:
+
+```powershell
+python scripts/npc_chat_cli.py --npc-id npc_quartermaster_rowan --player-id player-001 --debug
 ```
 
 ## Architecture
