@@ -114,6 +114,7 @@ class NpcRevealPolicy(BaseModel):
     blocked_topics: list[str]
     full_hint_unlocked: bool
     reveal_style: str
+    archetype: str
 
 
 class DerivedContext(BaseModel):

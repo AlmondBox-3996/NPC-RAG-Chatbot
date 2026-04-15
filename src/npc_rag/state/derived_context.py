@@ -58,6 +58,7 @@ class DerivedContextBuilder:
             blocked_topics=list(npc_state.knowledge_boundaries.forbidden_topics),
             full_hint_unlocked=full_hint_unlocked,
             reveal_style=npc_state.personality.speaking_style,
+            archetype=self._infer_npc_archetype(npc_state),
         )
 
         world_status = self._world_status(player_state, world_state)
@@ -122,3 +123,21 @@ class DerivedContextBuilder:
             claimed_items=sorted(claimed_items),
             unclaimed_items=sorted(unclaimed_items),
         )
+
+    def _infer_npc_archetype(self, npc_state: NpcState) -> str:
+        role = npc_state.role.lower()
+        traits = {trait.lower() for trait in npc_state.personality.traits}
+
+        if "blacksmith" in role or "smith" in role or "forge" in role:
+            return "blacksmith"
+        if "scholar" in role or "scribe" in role or "historian" in role:
+            return "scholar"
+        if "villager" in role or "farmer" in role or "merchant" in role:
+            return "helpful_villager"
+        if "cryptic" in traits or "devout" in traits or "guide" in role or "keeper" in role:
+            return "cryptic_guide"
+        if "supply" in role or "quartermaster" in role:
+            return "blacksmith"
+        if "well-informed" in traits:
+            return "scholar"
+        return "helpful_villager"

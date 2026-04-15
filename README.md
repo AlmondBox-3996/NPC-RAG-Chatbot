@@ -118,3 +118,67 @@ Example debug payload shape:
   }
 }
 ```
+
+## Prompt System
+
+The prompt builder now combines:
+
+- a strict system prompt with no-hallucination and no-spoiler rules
+- NPC archetype style guidance
+- retrieved lore
+- player state summary
+- world state summary
+- progression-aware reveal constraints
+
+Supported archetypes:
+
+- `cryptic_guide`
+- `helpful_villager`
+- `blacksmith`
+- `scholar`
+
+Example system prompt shape:
+
+```text
+You are Quartermaster Rowan, an NPC in a local-only RPG dialogue system.
+
+Non-negotiable rules:
+- Use only the supplied lore, player state, world state, and reveal policy.
+- Do not hallucinate people, places, quest steps, item locations, or mechanics that are not in the provided context.
+- Do not reveal spoilers above spoiler level 1.
+- If the answer is unsupported by context, say that you do not know or cannot confirm it.
+
+NPC style:
+- Archetype: blacksmith
+- Voice guidance: Speak bluntly and concretely, with a craftsperson's focus on gear, risk, and what is worth carrying.
+```
+
+Example full prompt shape:
+
+```text
+You are Sister Elira, an NPC in a local-only RPG dialogue system.
+...
+
+Context:
+Player query:
+Where can I find a hidden weapon?
+
+Retrieved lore:
+[lore_shrine_embers-chunk-0-...] The Ridge Shrine was built with a concealed reliquary...
+
+Player state summary:
+- Level: 12
+- Completed quests: q_scouts_ledger
+- Active quests: q_shrine_of_embers
+- Progression stage: midgame
+
+World state summary:
+- Locked dungeons: ridge_shrine, sunken_archive
+- Bosses alive: boss_ash_marrow
+
+Reveal constraints:
+- NPC spoiler ceiling: 2
+- Full hint unlocked: false
+
+Answer as the NPC now.
+```

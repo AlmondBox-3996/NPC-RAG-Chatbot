@@ -48,6 +48,7 @@ class DialogueOrchestrator:
             lore_context=lore,
             player_state=player_state,
             world_state=world_state,
+            derived_context=derived_context,
         )
         generation: GenerationResult = self.model_adapter.generate(prompt)
 
@@ -63,6 +64,7 @@ class DialogueOrchestrator:
             "allowed_spoiler_level": derived_context.player_knowledge.allowed_spoiler_level,
             "npc_reveal_spoiler_level": derived_context.npc_reveal_policy.reveal_spoiler_level,
             "npc_full_hint_unlocked": derived_context.npc_reveal_policy.full_hint_unlocked,
+            "npc_archetype": derived_context.npc_reveal_policy.archetype,
             "unlocked_dungeons": derived_context.world_status.unlocked_dungeons,
             "locked_dungeons": derived_context.world_status.locked_dungeons,
             "bosses_alive": derived_context.world_status.bosses_alive,
